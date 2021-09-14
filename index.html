@@ -31,7 +31,7 @@
             <div class="col-md-4">
                 <div class="withdraw status">
                     <h5>Withdraw</h5>
-                    <h2>$00</h2>
+                    <h2>$ <span id="currentWithDraw">00</span></h2>
                 </div>
             </div>
             <div class="col-md-4">
@@ -61,7 +61,8 @@
         </div>
     </div>
     <script>
-        // 
+
+        // Login Button Event Handler 
         var loginBtn = document.getElementById('login');
         loginBtn.addEventListener('click', function () {
             var loginArea = document.getElementById("login-area");
@@ -71,9 +72,9 @@
 
         })
 
-        // 
-        var depositAmount = document.getElementById("deposit-amount");
-        depositAmount.addEventListener('click', function() {
+        // Deposit Button Event Handler
+        var deposiBtn = document.getElementById("deposit-amount");
+        deposiBtn.addEventListener('click', function() {
             var depositNumber = getInputNumber("deposit-number");
             console.log(depositNumber);
 
@@ -83,12 +84,14 @@
             document.getElementById("deposit-number").value = "";
         })
 
-        // 
+        // WithDraw Button Event handler
 
         var withdrawBtn = document.getElementById("addwithdraw");
         withdrawBtn.addEventListener('click', function() {
             var withdrawNumber = getInputNumber("withdrawAmount")
-            console.log(withdrawNumber)
+            updateSpanText("currentWithDraw", withdrawNumber)
+            updateSpanText("currentBalance", -1 * withdrawNumber);
+            document.getElementById("withdrawAmount").value = "";
         })
 
         function getInputNumber(id) {
