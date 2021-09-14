@@ -1,6 +1,9 @@
 body{
     padding: 100px;
 }
+.NameColor{
+    color: gold;
+}
 .submit-area{
     margin-top: 50px;
     padding: 40px;
