@@ -45,9 +45,9 @@
             <div class="col-md-6">
                 <div class="submit-area">
                     <h4>Deposit</h4>
-                    <input id="deposit-number" type="text" class="form-control" placeholder="$ amount you want to deposit">
+                    <input id="depositAmount" type="text" class="form-control" placeholder="$ amount you want to deposit">
                     <br>
-                    <button id="deposit-amount" class="btn btn-success">Deposit</button>
+                    <button id="depositButton" class="btn btn-success">Deposit</button>
                 </div>
             </div>
             <div class="col-md-6">
@@ -73,15 +73,13 @@
         })
 
         // Deposit Button Event Handler
-        var deposiBtn = document.getElementById("deposit-amount");
+        var deposiBtn = document.getElementById("depositButton");
         deposiBtn.addEventListener('click', function() {
-            var depositNumber = getInputNumber("deposit-number");
+            var depositNumber = getInputNumber("depositAmount");
             console.log(depositNumber);
-
             updateSpanText("currentDeposit", depositNumber);
             updateSpanText("currentBalance", depositNumber);
-
-            document.getElementById("deposit-number").value = "";
+            document.getElementById("depositAmount").value = "";
         })
 
         // WithDraw Button Event handler
@@ -94,16 +92,17 @@
             document.getElementById("withdrawAmount").value = "";
         })
 
+        // Main Two Function
         function getInputNumber(id) {
             var Amount = document.getElementById(id).value;
             var amountNumber = parseFloat(Amount);
             return amountNumber;   
         }
 
-        function updateSpanText(id, depositNumber) {
+        function updateSpanText(id, addNumber) {
             var current = document.getElementById(id).innerText;
             var currentNumber = parseFloat(current);
-            var currentTotal = depositNumber + currentNumber;
+            var currentTotal = addNumber + currentNumber;
             document.getElementById(id).innerText = currentTotal;
         }
 
